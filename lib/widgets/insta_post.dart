@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:insta_grid/models/i_post.dart';
 import 'package:insta_grid/widgets/details_page.dart';
 
+import 'action_bar.dart';
+
 class InstaPost extends StatelessWidget {
   final IPost _post;
 
@@ -37,18 +39,7 @@ class InstaPost extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Icon(Icons.favorite_border),
-              Icon(Icons.chat_bubble_outline),
-              Icon(Icons.send),
-              Icon(Icons.bookmark_border),
-              RaisedButton(
-                  onPressed: () => _navigateToDetail(context),
-                  child: Text('Details', style: TextStyle(fontSize: 20)))
-            ],
-          ),
+          ActionBar(_post),
           Container(
               margin: EdgeInsets.all(6.0),
               alignment: Alignment.bottomLeft,
@@ -69,10 +60,5 @@ class InstaPost extends StatelessWidget {
         ]),
       ),
     );
-  }
-
-  void _navigateToDetail(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DetailsPage(_post)));
   }
 }
